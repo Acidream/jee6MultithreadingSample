@@ -19,7 +19,7 @@ public class SlowSingle {
     public Future<Void> slow() {
         try {
             System.out.println("Slow started");
-            for (int i = 0; i < 60 * 150; i++) {
+            for (int i = 0; i < 20; i++) {
                 if (sessionContext.wasCancelCalled()) {
                     Thread.sleep(5000);
                     System.out.println("graceful shutdown");

@@ -2,7 +2,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
-import javax.ejb.Startup;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -11,7 +10,7 @@ import java.util.concurrent.Future;
  * Created by oleg on 2018-03-03.
  */
 @Singleton
-@Startup
+//@Startup
 public class Main {
 
     @EJB
