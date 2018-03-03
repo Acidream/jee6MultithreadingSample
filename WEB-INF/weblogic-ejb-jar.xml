@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-ejb-jar
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar"
+        xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar http://xmlns.oracle.com/weblogic/weblogic-ejb-jar/1.2/weblogic-ejb-jar.xsd">
+
+    <!-- Define which work manager the EJB(s) should use -->
+    <weblogic-enterprise-bean>
+        <ejb-name>SlowSingle</ejb-name>
+        <dispatch-policy>myWorkManager</dispatch-policy>
+    </weblogic-enterprise-bean>
+
+    <!-- Other EJBs could use the same work manager... -->
+
+    <!-- Define the work manager -->
+    <work-manager>
+        <!-- Name -->
+        <name>myWorkManager</name>
+        <!-- Min Threads - Guarantees the minimum number of threads the server will allocate to requests -->
+        <min-threads-constraint>
+            <name>myWorkManager-MinThreads-Constraint</name>
+            <count>30</count>
+        </min-threads-constraint>
+        <!-- Max Threads - Guarantees the maximum number of threads the server will allocate to requests -->
+        <max-threads-constraint>
+            <name>myWorkManager-MaxThreads-Constraint</name>
+            <count>40</count>
+        </max-threads-constraint>
+        <!-- Capacity - Causes the server to reject requests only when it has reached its capacity -->
+        <capacity>
+            <name>myWorkManager-Capacity-Constraint</name>
+            <count>-1</count>
+        </capacity>
+        <ignore-stuck-threads>true</ignore-stuck-threads>
+    </work-manager>
+</weblogic-ejb-jar>
